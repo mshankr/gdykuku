@@ -23,7 +23,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: keys.googleRedirectURI + '/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
       // async function!
