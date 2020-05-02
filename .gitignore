@@ -1,4 +1,4 @@
-/config
+/config/dev.js
 
 # OS X
 .DS_Store*
