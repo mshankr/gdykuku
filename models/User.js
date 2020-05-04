@@ -6,7 +6,8 @@ const { Schema } = mongoose;
 // so we define them here
 
 const userSchema = new Schema({
-  googleId: String
+  googleId: String,
+  credits: { type: Number, default: 0 }
 })
 
 // create if not exist. if exist, then use the existing schema.

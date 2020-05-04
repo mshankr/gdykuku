@@ -12,6 +12,7 @@ require('./services/passport');
 mongoose.connect(keys.mongoURI)
 
 const app = express();
+app.use(express.json())
 
 app.use(
   cookieSession({
@@ -25,6 +26,19 @@ app.use(passport.initialize());
 app.use(passport.session()); // that's it, passport is using our cookies! to manage authentication  xD
 
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
+
+if (process.env.NODE_ENV === 'production') {
+  // handle static js / css files
+  app.use(express.static('frontend/build'))
+  // go find in frontend/build/static
+
+  // handle react-router routes
+  const path = require('path')
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build'))
+  })
+}
 
 // HEROKU has the ability to inject /set some environment variables
 // it is setup right before app is started.

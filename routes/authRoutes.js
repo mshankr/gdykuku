@@ -8,12 +8,13 @@ module.exports = (app) => {
     })
   );
 
+// after go thru middleware, what to do with (req, res)?
+// continue with the logic sister!
   app.get(
     '/auth/google/callback',
     passport.authenticate('google'),
-    (req, res) => {
-      res.send('authentication success')
-      // res.redirect('/surveys');
+    (req, res) => { // continue with the logic
+      res.redirect('/surveys')
       // will redirect to /surveys with user cookie
     }
   );
@@ -21,13 +22,13 @@ module.exports = (app) => {
 app.get(
   '/api/logout', (req, res) => {
     req.logout()
-    res.send(req.user)
+    res.redirect('/')
   }
 )
 
   app.get( // req = incoming object, res = outgoing response
     '/api/current_user', (req, res) => {
-      res.send(req.session) // so amazing! there is user attached to the req! attached by passport!
+      res.send(req.user) // so amazing! there is user attached to the req! attached by passport!
     }
   )
 }

@@ -1,4 +1,8 @@
 /config/dev.js
+/frontend/.env.development
+
+# build folder
+/frontend/build
 
 # OS X
 .DS_Store*
@@ -13,17 +17,19 @@ Desktop.ini
 # Linux
 .directory
 *~
-
+*.DS_Store
 
 # npm
 node_modules
+/frontend/node_modules
+/frontend/package-lock.json
 package-lock.json
 *.log
 *.gz
 
 
 # Coveralls
-coverage
+/frontend/coverage
 
 # Benchmarking
 benchmarks/graphs

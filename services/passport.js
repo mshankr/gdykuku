@@ -23,25 +23,23 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: keys.googleRedirectURI + '/auth/google/callback'
+      callbackURL: "/auth/google/callback",
+      proxy: "true"
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // async function!
-      User.findOne({ googleId: profile.id })
-        .then((existingUser) => {
-          if (existingUser) {
-            console.log('user exists already');
-                // error object
-            done(null, existingUser)
-          } else {
-            new User({ // not yet saved to mongodb!
-              googleId: profile.id
-            }).save() // now it's saved!
-            .then(user => done(null, user)) // always use the returned Model object from the promise
-            .catch(err => console.log(err))
-          }
-        })
-        .catch(err => console.log(err))
+      const existingUser = await User.findOne({ googleId: profile.id })
+      if (existingUser) {
+        console.log('user exists already');
+            // error object
+        done(null, existingUser)
+      } else {
+        const user = await new User({ // not yet saved to mongodb!
+          googleId: profile.id
+        }).save() // now it's saved!
+        done(null, user)
+      }
+
   }
   )
 )
