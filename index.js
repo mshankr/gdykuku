@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
   // handle react-router routes
   const path = require('path')
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build'))
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
   })
 }
 
