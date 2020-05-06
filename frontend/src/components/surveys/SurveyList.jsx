@@ -10,8 +10,9 @@ class SurveyList extends Component {
   }
 
   render() {
+    // reverse so that latest survey is at top
     return (
-      <div> // reverse so that latest survey is at top
+      <div>
         {this.props.surveys.reverse().map(({ _id, title, subject, body, yes, no, dateSent }) =>
           <div className="card darken-1 waves-effect" key={_id}>
             <div className='card-content'>
