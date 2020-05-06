@@ -53,7 +53,7 @@ module.exports = (app) => {
   })
 
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
-    res.send('Thanks for voting PIG!')
+    res.send('Thank u for voting, we highly regard your vote. Every vote counts. We love u a LOT!')
   })
 
 
