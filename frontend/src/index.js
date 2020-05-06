@@ -9,6 +9,8 @@ import { Provider }  from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 
+import axios from 'axios'
+window.axios = axios;
 
         // 1st argument: all the reducers in our app
         // 2nd argument: provides initial state of app

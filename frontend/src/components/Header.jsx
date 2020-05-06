@@ -26,7 +26,8 @@ class Header extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link to={this.props.auth ? "/surveys" : "/"} className="left brand-logo">
+          <Link to={this.props.auth ? "/surveys" : "/"} className="brand-logo"
+            style={{ marginLeft: "8px" }}>
             gdykuku
           </Link>
           <ul className="right">

@@ -5,7 +5,8 @@ const cookieSession = require('cookie-session');
 // to ask passport make use of the cookies
 const passport = require('passport');
 const keys = require('./config/keys')
-require('./models/User');
+require('./models/User')
+require('./models/Survey')
 require('./services/passport');
 
 
@@ -27,6 +28,7 @@ app.use(passport.session()); // that's it, passport is using our cookies! to man
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // handle static js / css files
